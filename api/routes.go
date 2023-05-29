@@ -3,15 +3,14 @@ package api
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/google/uuid"
+	"test_ecapture_backend/api/rest/handler/animales_handler"
 	"test_ecapture_backend/api/rest/handler/sessions_handler"
-	"test_ecapture_backend/api/rest/handler/usuarios_handler"
-
-	"test_ecapture_backend/api/rest/handler/perfiles_handler"
+	"test_ecapture_backend/api/rest/handler/vets_handler"
 
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 
-	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -30,8 +29,8 @@ func routes(db *sqlx.DB, loggerHttp bool, allowedOrigins string) *fiber.App {
 	}
 	TxID := uuid.New().String()
 
-	perfiles_handler.PerfilesRouter(app, db, TxID)
-	usuarios_handler.UsuariosRouter(app, db, TxID)
+	vets_handler.VetsRouter(app, db, TxID)
 	sessions_handler.SessionRouter(app, db, TxID)
+	animales_handler.AnimalesRouter(app, db, TxID)
 	return app
 }
