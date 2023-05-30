@@ -5,13 +5,12 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"test_ecapture_backend/internal/env"
+	"vet_ecapture_backend/internal/env"
 
 	_ "github.com/denisenkom/go-mssqldb"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
-	"test_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/logger"
 )
 
 var (

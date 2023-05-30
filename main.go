@@ -1,8 +1,8 @@
 package main
 
 import (
-	"test_ecapture_backend/api"
-	"test_ecapture_backend/internal/env"
+	"vet_ecapture_backend/api"
+	"vet_ecapture_backend/internal/env"
 )
 
 func main() {

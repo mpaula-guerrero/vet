@@ -2,7 +2,7 @@ package password
 
 import (
 	"golang.org/x/crypto/bcrypt"
-	"test_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/logger"
 )
 
 func Compare(id string, hashedPassword, p string) bool {

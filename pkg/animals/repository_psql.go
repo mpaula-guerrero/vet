@@ -3,8 +3,8 @@ package animals
 import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/internal/models"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/models"
 )
 
 type psqldb struct {
@@ -23,8 +23,8 @@ func NewAnimalPsqlRepository(db *sqlx.DB, user *models.User, txID string) *psqld
 
 // Create registra en la BD
 func (s psqldb) Create(m *Animal) error {
-	const sqlInsert = `INSERT INTO public.animals (id_vet, usuario, password, nombres, raza, edad, created_at, updated_at) 
-						VALUES (:id_vet, :usuario, :password, :nombres, :raza, :edad, Now(), Now())`
+	const sqlInsert = `INSERT INTO public.animals (id_vet, usuario, password, nombre, raza, edad, created_at, update_at) 
+						VALUES (:id_vet, :usuario, :password, :nombre, :raza, :edad, Now(), Now())`
 	_, err := s.DB.NamedExec(sqlInsert, &m)
 	if err != nil {
 		logger.Error.Printf(s.TxID, " - couldn't insert Animal: %v", err)
@@ -35,7 +35,7 @@ func (s psqldb) Create(m *Animal) error {
 
 // Update actualiza un registro en la BD
 func (s psqldb) Update(m *Animal) error {
-	const sqlUpdate = `UPDATE public.animals SET id_vet = :id_vet, usuario = :usuario, password = :password, nombres = :nombres, raza = :raza, edad = :edad, updated_at = Now() WHERE id = :id`
+	const sqlUpdate = `UPDATE public.animals SET id_vet = :id_vet, usuario = :usuario, password = :password, nombre = :nombre, raza = :raza, edad = :edad, update_at = Now() WHERE id = :id`
 	rs, err := s.DB.NamedExec(sqlUpdate, &m)
 	if err != nil {
 		logger.Error.Printf(s.TxID, " - couldn't update Animal: %v", err)
@@ -64,7 +64,7 @@ func (s psqldb) Delete(id int) error {
 
 // GetByID obtiene un registro de la BD
 func (s psqldb) GetByID(id int) (*Animal, error) {
-	const slqGetByID = `SELECT id, id_vet, usuario, password, nombres, raza, edad, created_at, updated_at FROM public.animals WHERE id = $1`
+	const slqGetByID = `SELECT id, id_vet, usuario, password, nombre, raza, edad, created_at, update_at FROM public.animals WHERE id = $1`
 	mdl := Animal{}
 	err := s.DB.Get(&mdl, slqGetByID, id)
 	if err != nil {
@@ -76,7 +76,7 @@ func (s psqldb) GetByID(id int) (*Animal, error) {
 
 // GetByAnimal obtiene un registro de la BD
 func (s *psqldb) GetByAnimal(usuario string) (*Animal, error) {
-	const sqlGetByAnimal = `SELECT id, id_vet, usuario, password, nombres, raza, edad, created_at, updated_at FROM public.animals WHERE usuario = $1 `
+	const sqlGetByAnimal = `SELECT id, id_vet, usuario, password, nombre, raza, edad, created_at, update_at FROM public.animals WHERE usuario = $1 `
 	mdl := Animal{}
 	err := s.DB.Get(&mdl, sqlGetByAnimal, usuario)
 	if err != nil {
@@ -88,7 +88,7 @@ func (s *psqldb) GetByAnimal(usuario string) (*Animal, error) {
 
 // GetAll obtiene todos los registros de la BD
 func (s *psqldb) GetAll() ([]*Animal, error) {
-	const sqlGetAll = `SELECT id, id_vet, usuario, password, nombres, raza, edad, created_at, updated_at FROM public.animals `
+	const sqlGetAll = `SELECT id, id_vet, usuario, password, nombre, raza, edad, created_at, update_at FROM public.animals `
 	ms := []*Animal{}
 	err := s.DB.Select(&ms, sqlGetAll)
 	if err != nil {

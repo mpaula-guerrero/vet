@@ -7,8 +7,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"net/http"
 	"strconv"
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/pkg/animals"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/pkg/animals"
 )
 
 type Handler struct {
@@ -27,7 +27,7 @@ func (h *Handler) create(c *fiber.Ctx) error {
 	}
 	serviceAnimal := animals.NewAnimalService(animals.NewAnimalPsqlRepository(h.DB, nil, h.TxID), nil, h.TxID)
 
-	err = serviceAnimal.Create(m.Id_vet, m.Usuario, m.Password, m.Nombres, m.Raza, m.Edad)
+	err = serviceAnimal.Create(m.Id_vet, m.Usuario, m.Password, m.Nombre, m.Raza, m.Edad)
 	if err != nil {
 		logger.Error.Printf(h.TxID, "no se pudo crear el animal: %v", err)
 		return c.Status(http.StatusBadRequest).JSON(res)
@@ -36,7 +36,7 @@ func (h *Handler) create(c *fiber.Ctx) error {
 		Id_vet:   m.Id_vet,
 		Usuario:  m.Usuario,
 		Password: m.Password,
-		Nombres:  m.Nombres,
+		Nombre:   m.Nombre,
 		Raza:     m.Raza,
 		Edad:     m.Edad,
 	})
@@ -60,7 +60,7 @@ func (h *Handler) update(c *fiber.Ctx) error {
 	}
 	fmt.Println(m)
 	serviceAnimal := animals.NewAnimalService(animals.NewAnimalPsqlRepository(h.DB, nil, h.TxID), nil, h.TxID)
-	err = serviceAnimal.Update(id, m.Id_vet, m.Usuario, m.Password, m.Nombres, m.Raza, m.Edad)
+	err = serviceAnimal.Update(id, m.Id_vet, m.Usuario, m.Password, m.Nombre, m.Raza, m.Edad)
 	if err != nil {
 		logger.Error.Printf(h.TxID, "no se pudo actualizar el animal: %v", err)
 		return c.Status(http.StatusBadRequest).JSON(res)
@@ -69,7 +69,7 @@ func (h *Handler) update(c *fiber.Ctx) error {
 		Id_vet:   m.Id_vet,
 		Usuario:  m.Usuario,
 		Password: m.Password,
-		Nombres:  m.Nombres,
+		Nombre:   m.Nombre,
 		Raza:     m.Raza,
 		Edad:     m.Edad,
 	})

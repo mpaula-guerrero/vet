@@ -1,8 +1,8 @@
 package vets
 
 import (
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/internal/models"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/models"
 )
 
 type ServicesVet interface {

@@ -6,8 +6,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"net/http"
 	"strconv"
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/pkg/vets"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/pkg/vets"
 )
 
 type Handler struct {

@@ -9,7 +9,7 @@ type Vet struct {
 	ID        int       `json:"id" db:"id" valid:"-"`
 	Nombre    string    `json:"nombre" db:"nombre" valid:"required"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	UpdateAt  time.Time `json:"update_at" db:"update_at"`
 }
 
 func NewVet(nombre string) *Vet {

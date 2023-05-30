@@ -3,14 +3,13 @@ package api
 import (
 	"crypto/tls"
 	"fmt"
+	"github.com/fatih/color"
 	"log"
 	"net"
-	"test_ecapture_backend/internal/env"
-	"test_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/env"
+	"vet_ecapture_backend/internal/logger"
 
 	"github.com/gofiber/fiber/v2"
-
-	"github.com/fatih/color"
 )
 
 const (

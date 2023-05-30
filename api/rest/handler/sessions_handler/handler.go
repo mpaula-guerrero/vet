@@ -5,8 +5,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/jmoiron/sqlx"
 	"net/http"
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/pkg/animals"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/pkg/animals"
 )
 
 type Handler struct {

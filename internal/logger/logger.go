@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"test_ecapture_backend/internal/env"
+	"vet_ecapture_backend/internal/env"
 )
 
 // Variables necesarias para logger

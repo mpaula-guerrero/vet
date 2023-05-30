@@ -1,13 +1,13 @@
 package animals
 
 import (
-	"test_ecapture_backend/internal/logger"
-	"test_ecapture_backend/internal/models"
+	"vet_ecapture_backend/internal/logger"
+	"vet_ecapture_backend/internal/models"
 )
 
 type ServicesAnimal interface {
-	Create(Id_vet int, Usuario string, Password string, Nombres string, Raza string, Edad string) error
-	Update(id int, Id_vet int, Usuario string, Password string, Nombres string, Raza string, Edad string) error
+	Create(Id_vet int, Usuario string, Password string, Nombre string, Raza string, Edad string) error
+	Update(id int, Id_vet int, Usuario string, Password string, Nombre string, Raza string, Edad string) error
 	Delete(id int) error
 	GetByID(id int) (*Animal, error)
 	GetByAnimal(usuario string) (*Animal, error)
@@ -20,8 +20,8 @@ type service struct {
 	txID       string
 }
 
-func (s service) Create(Id_vet int, Usuario string, Password string, Nombres string, Raza string, Edad string) error {
-	m := NewAnimal(Id_vet, Usuario, Password, Nombres, Raza, Edad)
+func (s service) Create(Id_vet int, Usuario string, Password string, Nombre string, Raza string, Edad string) error {
+	m := NewAnimal(Id_vet, Usuario, Password, Nombre, Raza, Edad)
 	valid, err := m.Validate()
 	if !valid {
 		logger.Error.Println(s.txID, " - don't meet validations:", err)
@@ -36,8 +36,8 @@ func (s service) Create(Id_vet int, Usuario string, Password string, Nombres str
 
 }
 
-func (s service) Update(id int, Id_vet int, Usuario string, Password string, Nombres string, Raza string, Edad string) error {
-	m := NewAnimal(Id_vet, Usuario, Password, Nombres, Raza, Edad)
+func (s service) Update(id int, Id_vet int, Usuario string, Password string, Nombre string, Raza string, Edad string) error {
+	m := NewAnimal(Id_vet, Usuario, Password, Nombre, Raza, Edad)
 	m.ID = id
 	valid, err := m.Validate()
 	if !valid {

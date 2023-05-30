@@ -10,19 +10,19 @@ type Animal struct {
 	Id_vet    int       `json:"id_vet" db:"id_vet" valid:"-"`
 	Usuario   string    `json:"usuario" db:"usuario" valid:"required"`
 	Password  string    `json:"password" db:"password" valid:"required"`
-	Nombres   string    `json:"nombres" db:"nombres" valid:"required"`
-	Raza      string    `json:"apellidos" db:"apellidos" valid:"required"`
+	Nombre    string    `json:"nombre" db:"nombre" valid:"required"`
+	Raza      string    `json:"raza" db:"raza" valid:"required"`
 	Edad      string    `json:"edad" db:"edad" valid:"required"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	UpdateAt  time.Time `json:"update_at" db:"update_at"`
 }
 
-func NewAnimal(Id_vet int, Usuario string, Password string, Nombres string, Raza string, Edad string) *Animal {
+func NewAnimal(Id_vet int, Usuario string, Password string, Nombre string, Raza string, Edad string) *Animal {
 	return &Animal{
 		Id_vet:   Id_vet,
 		Usuario:  Usuario,
 		Password: Password,
-		Nombres:  Nombres,
+		Nombre:   Nombre,
 		Raza:     Raza,
 		Edad:     Edad,
 	}

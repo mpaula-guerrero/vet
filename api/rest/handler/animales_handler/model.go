@@ -5,7 +5,7 @@ type AnimalRequest struct {
 	Id_vet   int    `json:"id_vet"`
 	Usuario  string `json:"usuario"`
 	Password string `json:"password"`
-	Nombres  string `json:"nombres"`
+	Nombre   string `json:"nombres"`
 	Raza     string `json:"raza" `
 	Edad     string `json:"edad" `
 }
@@ -15,7 +15,7 @@ type AnimalResponse struct {
 	Id_vet   int    `json:"id_vet"`
 	Usuario  string `json:"usuario"`
 	Password string `json:"password"`
-	Nombres  string `json:"nombres"`
+	Nombre   string `json:"nombres"`
 	Raza     string `json:"raza" `
 	Edad     string `json:"edad" `
 }

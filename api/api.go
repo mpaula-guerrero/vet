@@ -1,7 +1,7 @@
 package api
 
 import (
-	"test_ecapture_backend/internal/dbx"
+	"vet_ecapture_backend/internal/dbx"
 )
 
 func Start(port int, app string, loggerHttp bool, allowedOrigins string) {
